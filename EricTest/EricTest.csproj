@@ -18,6 +18,7 @@
     <Folder Include="Services\Verification\" />
     <Folder Include="wwwroot\.well-known\" />
     <Folder Include="wwwroot\achievements\" />
+    <Folder Include="wwwroot\badge-images\" />
     <Folder Include="wwwroot\profiles\" />
   </ItemGroup>
 

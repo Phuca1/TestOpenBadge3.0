@@ -1,0 +1,98 @@
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files
+
+# Build results
+[Bb]in/
+[Oo]bj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# IIS Express
+.vs/
+*.vspscc
+*.vssscc
+*.dbmdl
+*.dbproj.schemaview
+*.pdb
+*.cache
+*.bak
+*.log
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# ASP.NET temporary files
+**/App_Data/Logs/
+**/App_Data/uploads/
+**/App_Data/cache/
+**/App_Data/*.xml
+
+# Entity Framework
+*.aps
+*.psess
+*.vsp
+*.vspx
+
+# Rider / JetBrains IDE
+.idea/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# VS Code
+.vscode/
+
+# NuGet Packages
+*.nupkg
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# dotCover
+.idea/.dotCover
+
+# ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# Rider
+.idea/
+*.sln.iml
+
+# Dotnet Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Npm packages
+node_modules/
+
+# Yarn
+.yarn/
+.pnp.*
+.yarnrc.yml
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+*.trx
+
+# Coverage results
+coverage/
+*.coverage
+*.coveragexml
+
+# Publish directory
+publish/

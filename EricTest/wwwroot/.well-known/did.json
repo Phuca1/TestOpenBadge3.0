@@ -1,0 +1,14 @@
+{
+  "id": "did:web:openbadges.local:issuers:main",
+  "verificationMethod": [
+    {
+      "id": "did:web:openbadges.local:issuers:main#key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:web:openbadges.local:issuers:main",
+      "publicKeyMultibase": "zCTToaVwnVrXtYxQ5h3XwpbQJobnHs35wizmWXoEm6tDS"
+    }
+  ],
+  "authentication": [
+    "did:web:openbadges.local:issuers:main#key-1"
+  ]
+}

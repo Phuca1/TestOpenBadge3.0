@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@model CreateAchievementViewModel
+
+<h2>Create New Achievement</h2>
+
+<form id="createAchievementForm" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" required></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageFile">Badge Image</label>
+        <input type="file" asp-for="ImageFile" class="form-control" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Criteria.Narrative">Criteria</label>
+        <textarea asp-for="Criteria.Narrative" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tags">Tags (comma separated)</label>
+        <input asp-for="Tags" class="form-control" placeholder="programming,python,beginner" />
+    </div>
+
+    <input asp-for="IssuerId" type="hidden" value="@Model.IssuerId"/>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@section Scripts {
+    <script>
+        document.getElementById('createAchievementForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData();
+            formData.append('Name', document.getElementById('Name').value);
+            formData.append('Description', document.getElementById('Description').value);
+            // formData.append('Criteria.Narrative', document.getElementById('Criteria_Narrative').value);
+            formData.append('IssuerId', document.getElementById('IssuerId').value);
+
+            const tagsInput = document.getElementById('Tags').value;
+            if (tagsInput) {
+                tagsInput.split(',').forEach(tag => {
+                    formData.append('Tags', tag.trim());
+                });
+            }
+
+            const fileInput = document.getElementById('ImageFile');
+            if (fileInput.files.length > 0) {
+                formData.append('ImageFile', fileInput.files[0]);
+            }
+
+            // Add CSRF token
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            try {
+                const response = await fetch('/api/Achievement', {
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': token
+                    },
+                    body: formData
+                });
+
+                if (response.ok) {
+                    window.location.href = '/Admin/Achievements'; // Redirect on success
+                } else {
+                    const error = await response.json();
+                    alert(`Error: ${error.error}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred');
+            }
+        });
+    </script>
+}
